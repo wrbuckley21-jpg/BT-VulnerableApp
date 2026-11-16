@@ -174,3 +174,11 @@ jacocoTestReport {
             xml.destination file("${buildDir}/reports/jacoco.xml")
     }
 }
+
+configurations.configureEach {
+    if (name == "compileClasspath" || name == "runtimeClasspath"
+            || name.endsWith("CompileClasspath") || name.endsWith("RuntimeClasspath")) {
+        resolutionStrategy.activateDependencyLocking()
+    }
+}
+
